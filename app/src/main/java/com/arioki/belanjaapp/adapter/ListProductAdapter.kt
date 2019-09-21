@@ -17,12 +17,23 @@ class ListProductAdapter(val listProduct:ArrayList<Products>) :
         return ListProductViewHolder(view)
     }
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemCallback (onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback =onItemClickCallback
+    }
+
+
     override fun getItemCount(): Int {
         return listProduct.size
     }
 
     override fun onBindViewHolder(holder: ListProductViewHolder, position: Int) {
         holder.bind(listProduct[position])
+        holder.itemView.setOnClickListener(){
+            onItemClickCallback
+                .onItemClick(listProduct[holder.adapterPosition])
+        }
     }
 
 
@@ -34,5 +45,8 @@ class ListProductAdapter(val listProduct:ArrayList<Products>) :
                 Glide.with(this).load(products.image).into(imageProduct)
             }
         }
+    }
+    interface OnItemClickCallback{
+        fun onItemClick(data:Products)
     }
 }
