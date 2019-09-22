@@ -70,6 +70,12 @@ Kotlin is a modern and statically typed programming language targeting the JVM, 
 <center>
   <table>
     <tr>
+       <td align="center">
+        <a href="https://www.facebook.com/gdg.jogjakarta/">
+          <img width="100" src="https://scontent-sin2-2.xx.fbcdn.net/v/t1.0-9/68634561_887288858301017_7299727940994990080_n.jpg?_nc_cat=107&_nc_oc=AQkBdbXfqLnyUefaQCAdnl6Ei98gnVfIy6KdgandhjRxhEzLGr8UEU4LY-ZfVCfkBLk&_nc_ht=scontent-sin2-2.xx&oh=a04a1d548d52a2262cd72748f88bcfd7&oe=5E065B85" alt="Andhika Yuana"><br/>
+          <sub><b>GDG Jogjakarta</b></sub>
+        </a>
+      </td>
       <td align="center">
         <a href="https://github.com/aahmadhadi">
           <img width="100" src="https://avatars1.githubusercontent.com/u/10376354?s=460&v=4" alt="Andhika Yuana"><br/>
