@@ -73,4 +73,32 @@ class ProductRepository (val api : BelanjaApi.Api){
             }
         })
     }
+
+    fun update(
+        id: Int,
+        product: Product,
+        onSuccess: (Product) -> Unit,
+        onError: (Throwable) -> Unit
+    ){
+        api.updateProuct(id,product).enqueue(object : Callback<ProductResponse>{
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                onError(t)
+            }
+
+            override fun onResponse(
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
+            ) {
+                if (response.isSuccessful){
+                    response.body()?.data?.let {
+                        with(it){
+                            onSuccess(Product(name, price, image, id))
+                        }
+                    }
+                }else{
+                    onError(Throwable("Something went wrong!"))
+                }
+            }
+        })
+    }
 }

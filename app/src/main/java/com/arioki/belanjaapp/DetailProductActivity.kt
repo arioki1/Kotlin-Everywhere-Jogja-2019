@@ -43,7 +43,10 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     private fun render(edit: Boolean, product: Product) {
-        if (edit)showDetailProduct(product)
+        if (edit){
+            showDetailProduct(product)
+            btnSimpan.text = "Update"
+        }
         btnHapus.visibility = if(edit) View.VISIBLE else View.GONE
         etProductImageDetail.isSingleLine = true
         etProductHargaDetail.isSingleLine = true
@@ -96,12 +99,30 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     private fun actionUpdateData(product: Product) {
-        with(product){
+        product.apply {
+            if(etProductNameDetail.text.toString().isNotEmpty()) name =
+                etProductHargaDetail.text.toString()
+            if(etProductHargaDetail.text.toString().isNotEmpty()) price =
+                etProductHargaDetail.text.toString().toInt()
+            if(etProductImageDetail.text.toString().isNotEmpty()){
+                image = etProductImageDetail.text.toString()
+            }else{
+                val random = Random.nextInt(100,1000)
+                image = "https://loremflickr.com/100/100?lock=$random"
+            }
+        }
 
+        product.id?.let {
+            App.instances.repository.update(it,product,{
+                "data updated successfully".toast(this@DetailProductActivity)
+                setResult(RESULT_CODE_RELOAD_DATA)
+                finish()
+            },{
+                it.printStackTrace()
+                it.message?.toast(this@DetailProductActivity)
+            })
         }
     }
-
-
 
     private fun showDetailProduct(product: Product) {
         with(product){
