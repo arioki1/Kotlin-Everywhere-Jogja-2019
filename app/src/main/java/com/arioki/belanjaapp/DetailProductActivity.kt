@@ -56,6 +56,21 @@ class DetailProductActivity : AppCompatActivity() {
                 actionSaveData()
             }
         }
+        btnHapus.setOnClickListener {
+            product.id?.let { it1 -> actionBtnDelete(it1) }
+        }
+    }
+
+    private fun actionBtnDelete(id: Int) {
+
+            App.instances.repository.delete(id, {
+                "Data delete successfully".toast(this@DetailProductActivity)
+                setResult(RESULT_CODE_RELOAD_DATA)
+                finish()
+            },{
+                it.printStackTrace()
+                it.message?.toast(this@DetailProductActivity)
+            })
     }
 
     private fun actionSaveData() {
@@ -81,8 +96,12 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     private fun actionUpdateData(product: Product) {
-        "Update".toast(this@DetailProductActivity)
+        with(product){
+
+        }
     }
+
+
 
     private fun showDetailProduct(product: Product) {
         with(product){
