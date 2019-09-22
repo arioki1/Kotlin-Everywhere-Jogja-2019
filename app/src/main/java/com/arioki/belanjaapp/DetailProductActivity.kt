@@ -101,7 +101,7 @@ class DetailProductActivity : AppCompatActivity() {
     private fun actionUpdateData(product: Product) {
         product.apply {
             if(etProductNameDetail.text.toString().isNotEmpty()) name =
-                etProductHargaDetail.text.toString()
+                etProductNameDetail.text.toString()
             if(etProductHargaDetail.text.toString().isNotEmpty()) price =
                 etProductHargaDetail.text.toString().toInt()
             if(etProductImageDetail.text.toString().isNotEmpty()){
