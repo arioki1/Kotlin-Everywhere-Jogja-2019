@@ -11,6 +11,7 @@
 - [Requirements](#Requirements)
 - [Usage](#Usage)
 - [Screenshots](#Screenshots)
+- [Demo App](#Demo-App)
 - [Release APK](#Release-APK)
 - [Contributors](#Contributors)
 
