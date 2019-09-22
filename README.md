@@ -12,7 +12,6 @@
 - [Usage](#Usage)
 - [Screenshots](#Screenshots)
 - [Release APK](#Release-APK)
-- [Related Project](#Related-Project)
 - [Contributors](#Contributors)
 
 ## Introduction
