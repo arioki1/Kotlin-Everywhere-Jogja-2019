@@ -4,14 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.arioki.belanjaapp.ext.toast
 import com.arioki.belanjaapp.model.Product
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_detail_product.*
-import kotlinx.android.synthetic.main.item_list_product.*
+import kotlin.random.Random
+
 
 class DetailProductActivity : AppCompatActivity() {
     companion object{
@@ -37,9 +38,50 @@ class DetailProductActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_product)
         val isEdit = intent.getBooleanExtra(EXTRA_EDIT, false)
         val data = intent.getSerializableExtra(EXTRA_PRODUCT)
-
         val product = if (data == null) Product() else data as Product
-        showDetailProduct(product)
+        render(isEdit, product)
+    }
+
+    private fun render(edit: Boolean, product: Product) {
+        if (edit)showDetailProduct(product)
+        btnHapus.visibility = if(edit) View.VISIBLE else View.GONE
+        etProductImageDetail.isSingleLine = true
+        etProductHargaDetail.isSingleLine = true
+        etProductNameDetail.isSingleLine = true
+
+        btnSimpan.setOnClickListener {
+            if (edit){
+                actionUpdateData(product)
+            }else{
+                actionSaveData()
+            }
+        }
+    }
+
+    private fun actionSaveData() {
+        val random = Random.nextInt(100,1000)
+        val product = Product(
+            etProductNameDetail.text.toString(),
+            etProductHargaDetail.text.toString().toInt(),
+            if (etProductImageDetail.text.toString().isNotEmpty()){
+                etProductImageDetail.text.toString()
+            }else{
+                "https://loremflickr.com/100/100?lock=$random"
+            }
+        )
+        App.instances.repository.save(product,{
+            "data saved successfully".toast(this@DetailProductActivity)
+            setResult(RESULT_CODE_RELOAD_DATA)
+            finish()
+        },{
+            it.printStackTrace()
+            it.message?.toast(this@DetailProductActivity)
+        })
+
+    }
+
+    private fun actionUpdateData(product: Product) {
+        "Update".toast(this@DetailProductActivity)
     }
 
     private fun showDetailProduct(product: Product) {
@@ -53,5 +95,6 @@ class DetailProductActivity : AppCompatActivity() {
                 .into(imgProductDetail)
         }
     }
+
 
 }

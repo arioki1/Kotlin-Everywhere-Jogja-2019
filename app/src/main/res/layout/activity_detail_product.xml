@@ -33,6 +33,7 @@
         android:textColor="@android:color/black" />
 
     <EditText
+        android:inputType="numberDecimal"
         android:id="@+id/etProductHargaDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -63,6 +64,7 @@
             android:textColor="@android:color/white" />
 
         <Button
+            android:id="@+id/btnHapus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
