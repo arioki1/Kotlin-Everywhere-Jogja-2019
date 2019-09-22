@@ -4,16 +4,16 @@
 
 ## Table of Contents
 
-- [Table of Contents](#Table-of-Contents)
-- [Introduction](#Introduction)
-- [Link Modul](#Link-Modul)
-- [Features](#Features)
-- [Requirements](#Requirements)
-- [Usage](#Usage)
-- [Screenshots](#Screenshots)
-- [Demo App](#Demo-App)
-- [Release APK](#Release-APK)
-- [Contributors](#Contributors)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Link Modul](#link-modul)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Demo App](#demo-app)
+- [Release APK](#release-apk)
+- [Contributors](#contributors)
 
 ## Introduction
 
