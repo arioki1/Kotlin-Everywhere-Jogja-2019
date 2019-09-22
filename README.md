@@ -78,14 +78,14 @@ Kotlin is a modern and statically typed programming language targeting the JVM, 
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/aahmadhadi">
+        <a href="https://github.com/andhikayuana/">
           <img width="100" src="https://avatars1.githubusercontent.com/u/10376354?s=460&v=4" alt="Andhika Yuana"><br/>
-          <sub><b>Ahmad Hadi Jaelani</b></sub>
+          <sub><b>Andhika Yuana</b></sub>
           <sub><b>Speaker</b></sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/haferz17">
+        <a href="https://gist.github.com/Fatimazza/">
           <img width="100" src="https://avatars1.githubusercontent.com/u/15083104?s=460&v=4" alt="Fatima Azzahro"><br/>
           <sub><b>Fatima Azzahro</b></sub>
           <sub><b>Speaker</b></sub>
