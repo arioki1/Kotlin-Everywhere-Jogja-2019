@@ -1,8 +1,11 @@
 package com.arioki.belanjaapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.arioki.belanjaapp.ext.toast
+import com.arioki.belanjaapp.model.Product
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -12,25 +15,43 @@ import kotlinx.android.synthetic.main.item_list_product.*
 
 class DetailProductActivity : AppCompatActivity() {
     companion object{
-        const val EXTRA_NAME = "extra_name"
-        const val EXTRA_PRICE = "extra_price"
-        const val EXTRA_IMAGE_URL = "extra_image_url"
+        fun editIntent(context: Context, product: Product): Intent {
+            return Intent(context, DetailProductActivity::class.java).apply {
+                putExtra(EXTRA_PRODUCT, product)
+                putExtra(EXTRA_EDIT, true)
+            }
+        }
+
+        fun addIntent(context: Context): Intent {
+            return Intent(context, DetailProductActivity::class.java)
+        }
+
+        const val REQUEST_CODE_DETAIL_PRODUCT: Int = 123
+        const val RESULT_CODE_RELOAD_DATA: Int = 124
+        const val EXTRA_PRODUCT = "extra_product"
+        const val EXTRA_EDIT = "extra_edit"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_product)
+        val isEdit = intent.getBooleanExtra(EXTRA_EDIT, false)
+        val data = intent.getSerializableExtra(EXTRA_PRODUCT)
 
-        showDetailProduct()
+        val product = if (data == null) Product() else data as Product
+        showDetailProduct(product)
     }
 
-    private fun showDetailProduct() {
-        etProductNameDetail.setText(intent.getStringExtra(EXTRA_NAME))
-        etProductHargaDetail.setText(intent.getStringExtra(EXTRA_PRICE))
-        etProductImageDetail.setText(intent.getStringExtra(EXTRA_IMAGE_URL))
-        Glide.with(this)
-            .load(intent.getStringExtra(EXTRA_IMAGE_URL))
-            .transform(CenterCrop(),RoundedCorners(20))
-            .into(imgProductDetail)
+    private fun showDetailProduct(product: Product) {
+        with(product){
+            etProductNameDetail.setText(name)
+            etProductHargaDetail.setText(price.toString())
+            etProductImageDetail.setText(image)
+            Glide.with(this@DetailProductActivity)
+                .load(image)
+                .transform(CenterCrop(),RoundedCorners(20))
+                .into(imgProductDetail)
+        }
     }
+
 }

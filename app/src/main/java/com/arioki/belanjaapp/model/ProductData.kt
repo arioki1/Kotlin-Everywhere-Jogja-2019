@@ -1,11 +1,11 @@
 package com.arioki.belanjaapp.model
 
 object ProductData {
-    val listProduct: ArrayList<Products>
+    val listProduct: ArrayList<Product>
         get() {
-            val list = arrayListOf<Products>()
+            val list = arrayListOf<Product>()
             for (data in dataProducts) {
-                val products = Products()
+                val products = Product()
                 products.name = data[0].toString()
                 products.price = Integer.valueOf(data[1].toString())
                 products.image = data[2].toString()
